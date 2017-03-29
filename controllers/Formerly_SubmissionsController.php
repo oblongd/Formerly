@@ -159,4 +159,16 @@ class Formerly_SubmissionsController extends BaseController
 
 		$this->returnJson(array('ok' => 'true', 'alreadysubmitted' => $ok, 'email'=> $email, 'formid' => $formId));
 	}
+
+	public function actionMaxSubmissions()
+	{
+		$this->requireAjaxRequest();
+
+		$email = craft()->request->getRequiredPost('email');
+		$formId = craft()->request->getRequiredPost('formid');
+		$max = craft()->request->getRequiredPost('max');
+		$ok = craft()->formerly_submissions->maxSubmissions($email, $formId, $max);
+
+		$this->returnJson(array('ok' => 'true', 'maxSubmissions' => $ok, 'email'=> $email, 'formid' => $formId, 'max' => $max));
+	}
 }
