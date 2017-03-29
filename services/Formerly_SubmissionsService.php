@@ -66,6 +66,27 @@ class Formerly_SubmissionsService extends BaseApplicationComponent
 		return false;
 
 	}
+	
+	public function maxSubmissions($email, $formId, $max) {
+		$limitCount = 0;
+
+		$criteria = craft()->elements->getCriteria('Formerly_Submission');
+		$criteria-> search = $email;
+		
+		foreach($criteria->find() as $submission)
+		{
+			if ($submission->formId == $formId) {
+				$limitCount++;
+			}
+		}
+
+		if ($limitCount >= $max) {
+			return true;
+		}
+
+		return false;
+
+	}
 
 	public function saveSubmission(Formerly_SubmissionModel $submission)
 	{
