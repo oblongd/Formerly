@@ -174,7 +174,7 @@ Set these config settings in /craft/config/general.php as needed
 								{% set selected = submission is defined and submission[question.handle]
 									? submission[question.handle] == option.value
 									: option.default %}
-								<option {{ selected ? 'selected' }}>
+								<option {{ selected ? 'selected' }} value="{{ option.value }}">
 									{{ option.label }}
 								</option>
 							{% endfor %}
