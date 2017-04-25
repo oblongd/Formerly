@@ -3,7 +3,7 @@ namespace Craft;
 
 class Formerly_SubmissionsController extends BaseController
 {
-	protected $allowAnonymous = array('actionPostSubmission');
+	protected $allowAnonymous = array('actionPostSubmission','actionAlreadySubmitted','actionMaxSubmissions');
 
 	public function actionIndex()
 	{
